@@ -27,7 +27,7 @@ class tkinterApp(tk.Tk):
 
 		# iterating through a tuple consisting
 		# of the different page layouts
-		for F in (StartPage, CatagoryOptions, Type_Name, Write_Name, FoodGame1, FoodGame2, FoodGame3, FoodGame4, FoodGame5, FoodGame6, FoodGame7, FoodGame8, FoodGame9, FoodGame10, ShapeGame, AnimalGame, NumberGame, Correct1, Incorrect1, Correct2, Incorrect2, Correct3, Incorrect3, Correct4, Incorrect4, Correct5, Incorrect5, Correct6, Incorrect6, Correct7, Incorrect7, Correct8, Incorrect8, Correct9, Incorrect9, Correct10, Incorrect10):
+		for F in (StartPage, CatagoryOptions, Type_Name, Write_Name, FoodGame1, FoodGame2, FoodGame3, FoodGame4, FoodGame5, FoodGame6, FoodGame7, FoodGame8, FoodGame9, FoodGame10, ShapeGame, AnimalGame, NumberGame, FoodCorrect1, FoodInorrect1, FoodCorrect2, FoodInorrect2, FoodCorrect3, FoodInorrect3, FoodCorrect4, FoodInorrect4, FoodCorrect5, FoodInorrect5, FoodCorrect6, FoodInorrect6, FoodCorrect7, FoodInorrect7, FoodCorrect8, FoodInorrect8, FoodCorrect9, FoodInorrect9, FoodCorrect10, FoodInorrect10):
 
 			frame = F(container, self)
 
@@ -226,9 +226,9 @@ class AnimalGame(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct)
+            self.controller.show_frame(FoodCorrect)
         else:
-            self.controller.show_frame(Incorrect)
+            self.controller.show_frame(FoodInorrect)
             
     def next_question(self):
         self.animalWords = random.sample(self.animalWords, k=4)
@@ -269,9 +269,9 @@ class NumberGame(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct)
+            self.controller.show_frame(FoodCorrect)
         else:
-            self.controller.show_frame(Incorrect)
+            self.controller.show_frame(FoodInorrect)
             
     def next_question(self):
         self.numberWords = random.sample(self.numberWords, k=4)
@@ -313,9 +313,9 @@ class ShapeGame(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct)
+            self.controller.show_frame(FoodCorrect)
         else:
-            self.controller.show_frame(Incorrect)
+            self.controller.show_frame(FoodInorrect)
             
     def next_question(self):
         self.shapeWords = random.sample(self.shapeWords, k=4)
@@ -356,23 +356,19 @@ class FoodGame1(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct1)
+            self.controller.show_frame(FoodCorrect1)
         else:
-            self.controller.show_frame(Incorrect1)
+            self.controller.show_frame(FoodInorrect1)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
         self.answer = random.sample(self.foodWords, k=1)
         self.question_number += 1
         self.create_question()
-
-
-
-# Correct_Page
-class Correct1(tk.Frame):
+class FoodCorrect1(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
@@ -385,14 +381,11 @@ class Correct1(tk.Frame):
 
     def on_show(self):
         self.controller.foodgame.next_question()
-
-
-# Incorrect Page
-class Incorrect1(tk.Frame):
+class FoodInorrect1(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
                            command=lambda: controller.show_frame(FoodGame2))
@@ -403,8 +396,6 @@ class Incorrect1(tk.Frame):
 
     def on_show(self):
         self.controller.foodgame.next_question()
-
-
 
 
 class FoodGame2(tk.Frame):
@@ -437,23 +428,19 @@ class FoodGame2(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct2)
+            self.controller.show_frame(FoodCorrect2)
         else:
-            self.controller.show_frame(Incorrect2)
+            self.controller.show_frame(FoodInorrect2)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
         self.answer = random.sample(self.foodWords, k=1)
         self.question_number += 1
         self.create_question()
-
-
-
-# Correct_Page
-class Correct2(tk.Frame):
+class FoodCorrect2(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
@@ -466,14 +453,11 @@ class Correct2(tk.Frame):
 
     def on_show(self):
         self.controller.foodgame.next_question()
-
-
-# Incorrect Page
-class Incorrect2(tk.Frame):
+class FoodInorrect2(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
                            command=lambda: controller.show_frame(FoodGame3))
@@ -484,10 +468,6 @@ class Incorrect2(tk.Frame):
 
     def on_show(self):
         self.controller.foodgame.next_question()
-
-
-#---------------------------------------------------------------------------------------------------------------#
-
 class FoodGame3(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -518,9 +498,9 @@ class FoodGame3(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct3)
+            self.controller.show_frame(FoodCorrect3)
         else:
-            self.controller.show_frame(Incorrect3)
+            self.controller.show_frame(FoodInorrect3)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
@@ -529,12 +509,10 @@ class FoodGame3(tk.Frame):
         self.create_question()
 
 
-
-# Correct_Page
-class Correct3(tk.Frame):
+class FoodCorrect3(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
@@ -549,12 +527,11 @@ class Correct3(tk.Frame):
         self.controller.foodgame.next_question()
 
 
-# Incorrect Page
-class Incorrect3(tk.Frame):
+class FoodInorrect3(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
                            command=lambda: controller.show_frame(FoodGame4))
@@ -566,8 +543,6 @@ class Incorrect3(tk.Frame):
     def on_show(self):
         self.controller.foodgame.next_question()
 
-
-#---------------------------------------------------------------------------------------------------------------#
 
 class FoodGame4(tk.Frame):
     def __init__(self, parent, controller):
@@ -599,23 +574,19 @@ class FoodGame4(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct4)
+            self.controller.show_frame(FoodCorrect4)
         else:
-            self.controller.show_frame(Incorrect4)
+            self.controller.show_frame(FoodInorrect4)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
         self.answer = random.sample(self.foodWords, k=1)
         self.question_number += 1
         self.create_question()
-
-
-
-# Correct_Page
-class Correct4(tk.Frame):
+class FoodCorrect4(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
@@ -630,12 +601,11 @@ class Correct4(tk.Frame):
         self.controller.foodgame.next_question()
 
 
-# Incorrect Page
-class Incorrect4(tk.Frame):
+class FoodInorrect4(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
                            command=lambda: controller.show_frame(FoodGame5))
@@ -647,8 +617,6 @@ class Incorrect4(tk.Frame):
     def on_show(self):
         self.controller.foodgame.next_question()
 
-
-#---------------------------------------------------------------------------------------------------------------#
 
 class FoodGame5(tk.Frame):
     def __init__(self, parent, controller):
@@ -680,9 +648,9 @@ class FoodGame5(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct5)
+            self.controller.show_frame(FoodCorrect5)
         else:
-            self.controller.show_frame(Incorrect5)
+            self.controller.show_frame(FoodInorrect5)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
@@ -691,12 +659,10 @@ class FoodGame5(tk.Frame):
         self.create_question()
 
 
-
-# Correct_Page
-class Correct5(tk.Frame):
+class FoodCorrect5(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
@@ -711,12 +677,11 @@ class Correct5(tk.Frame):
         self.controller.foodgame.next_question()
 
 
-# Incorrect Page
-class Incorrect5(tk.Frame):
+class FoodInorrect5(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
                            command=lambda: controller.show_frame(FoodGame6))
@@ -728,8 +693,6 @@ class Incorrect5(tk.Frame):
     def on_show(self):
         self.controller.foodgame.next_question()
 
-
-#---------------------------------------------------------------------------------------------------------------#
 
 class FoodGame6(tk.Frame):
     def __init__(self, parent, controller):
@@ -761,9 +724,9 @@ class FoodGame6(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct6)
+            self.controller.show_frame(FoodCorrect6)
         else:
-            self.controller.show_frame(Incorrect6)
+            self.controller.show_frame(FoodInorrect6)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
@@ -772,12 +735,10 @@ class FoodGame6(tk.Frame):
         self.create_question()
 
 
-
-# Correct_Page
-class Correct6(tk.Frame):
+class FoodCorrect6(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
@@ -792,12 +753,11 @@ class Correct6(tk.Frame):
         self.controller.foodgame.next_question()
 
 
-# Incorrect Page
-class Incorrect6(tk.Frame):
+class FoodInorrect6(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
                            command=lambda: controller.show_frame(FoodGame7))
@@ -809,8 +769,6 @@ class Incorrect6(tk.Frame):
     def on_show(self):
         self.controller.foodgame.next_question()
 
-
-#---------------------------------------------------------------------------------------------------------------#
 
 class FoodGame7(tk.Frame):
     def __init__(self, parent, controller):
@@ -842,9 +800,9 @@ class FoodGame7(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct7)
+            self.controller.show_frame(FoodCorrect7)
         else:
-            self.controller.show_frame(Incorrect7)
+            self.controller.show_frame(FoodInorrect7)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
@@ -853,12 +811,10 @@ class FoodGame7(tk.Frame):
         self.create_question()
 
 
-
-# Correct_Page
-class Correct7(tk.Frame):
+class FoodCorrect7(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
@@ -873,12 +829,11 @@ class Correct7(tk.Frame):
         self.controller.foodgame.next_question()
 
 
-# Incorrect Page
-class Incorrect7(tk.Frame):
+class FoodInorrect7(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
                            command=lambda: controller.show_frame(FoodGame8))
@@ -890,8 +845,6 @@ class Incorrect7(tk.Frame):
     def on_show(self):
         self.controller.foodgame.next_question()
 
-
-#---------------------------------------------------------------------------------------------------------------#
 
 class FoodGame8(tk.Frame):
     def __init__(self, parent, controller):
@@ -923,9 +876,9 @@ class FoodGame8(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct8)
+            self.controller.show_frame(FoodCorrect8)
         else:
-            self.controller.show_frame(Incorrect8)
+            self.controller.show_frame(FoodInorrect8)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
@@ -934,12 +887,10 @@ class FoodGame8(tk.Frame):
         self.create_question()
 
 
-
-# Correct_Page
-class Correct8(tk.Frame):
+class FoodCorrect8(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
@@ -954,12 +905,11 @@ class Correct8(tk.Frame):
         self.controller.foodgame.next_question()
 
 
-# Incorrect Page
-class Incorrect8(tk.Frame):
+class FoodInorrect8(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
                            command=lambda: controller.show_frame(FoodGame9))
@@ -971,8 +921,6 @@ class Incorrect8(tk.Frame):
     def on_show(self):
         self.controller.foodgame.next_question()
 
-
-#---------------------------------------------------------------------------------------------------------------#
 
 class FoodGame9(tk.Frame):
     def __init__(self, parent, controller):
@@ -1004,9 +952,9 @@ class FoodGame9(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct9)
+            self.controller.show_frame(FoodCorrect9)
         else:
-            self.controller.show_frame(Incorrect9)
+            self.controller.show_frame(FoodInorrect9)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
@@ -1015,12 +963,10 @@ class FoodGame9(tk.Frame):
         self.create_question()
 
 
-
-# Correct_Page
-class Correct9(tk.Frame):
+class FoodCorrect9(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
@@ -1035,12 +981,11 @@ class Correct9(tk.Frame):
         self.controller.foodgame.next_question()
 
 
-# Incorrect Page
-class Incorrect9(tk.Frame):
+class FoodInorrect9(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
         button = ttk.Button(self, text="Next Question",
                            command=lambda: controller.show_frame(FoodGame10))
@@ -1052,8 +997,6 @@ class Incorrect9(tk.Frame):
     def on_show(self):
         self.controller.foodgame.next_question()
 
-
-#---------------------------------------------------------------------------------------------------------------#
 
 class FoodGame10(tk.Frame):
     def __init__(self, parent, controller):
@@ -1085,9 +1028,9 @@ class FoodGame10(tk.Frame):
 
     def check_answer(self, answer):
         if answer == self.answer[0]:
-            self.controller.show_frame(Correct10)
+            self.controller.show_frame(FoodCorrect10)
         else:
-            self.controller.show_frame(Incorrect10)
+            self.controller.show_frame(FoodInorrect10)
         
     def next_question(self):
         self.foodWords = random.sample(self.foodWords, k=4)
@@ -1096,12 +1039,10 @@ class FoodGame10(tk.Frame):
         self.create_question()
 
 
-
-# Correct_Page
-class Correct10(tk.Frame):
+class FoodCorrect10(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
+        self.config(bg='#d1f3c5')
         label = ttk.Label(self, text="Correct!")
         label.pack()
 
@@ -1113,12 +1054,11 @@ class Correct10(tk.Frame):
         self.controller.foodgame.next_question()
 
 
-# Incorrect Page
-class Incorrect10(tk.Frame):
+class FoodInorrect10(tk.Frame):
     def __init__(self, parent, controller):   
         tk.Frame.__init__(self, parent)
-
-        label = ttk.Label(self, text="Incorrect!")
+        self.config(bg='#ff7779')
+        label = ttk.Label(self, text="Inorrect!")
         label.pack()
 
         exit_button = ttk.Button(self, text="exit", command=lambda: controller.show_frame(CatagoryOptions))
@@ -1126,7 +1066,6 @@ class Incorrect10(tk.Frame):
 
     def on_show(self):
         self.controller.foodgame.next_question()
-
 
 #---------------------------------------------------------------------------------------------------------------#
 
