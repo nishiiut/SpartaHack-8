@@ -1,7 +1,7 @@
 Prepare for Kindergarten!  
   
 Files  
-spartahack8.py - Main File to run the code. (Please try the 'food' category and 'write your name' category)  
+spartahack8.py - Main File to run the code. (When trying out this code, please use full size window)(Please try out the 'food' category and 'write your name' category)  
 image folder - contains all the images used in the code  
   
 Inspiration  
