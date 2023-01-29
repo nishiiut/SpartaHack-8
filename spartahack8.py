@@ -179,9 +179,13 @@ class Write_Name(tk.Frame):
         def on_click():
             canvas.delete('all')
 
-        # Create a button to delete the button
+        # Create a button to check
+        check_button = tk.Button(self, text="Check", font=('Comic Sans MS', 10, 'bold'))
+        check_button.place(relx=0.4, rely=0.9, anchor=tk.CENTER)
+        
+        # Create a button to delete
         delete_button = tk.Button(self, text="Delete", font=('Comic Sans MS', 10, 'bold'), command=on_click)
-        delete_button.place(relx=0.5, rely=0.9, anchor=tk.CENTER)
+        delete_button.place(relx=0.6, rely=0.9, anchor=tk.CENTER)
 
         # Create a button to go back to Typing Name
         tryagain_button = tk.Button(self, text ="Type Again", font=('Comic Sans MS', 10, 'bold'),
